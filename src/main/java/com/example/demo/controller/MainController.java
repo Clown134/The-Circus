@@ -14,5 +14,4 @@ public class MainController {
         model.addAttribute("message", string);
         return "index";
     }
-
 }
