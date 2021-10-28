@@ -7,7 +7,7 @@
     <title>Альбом | Album example for Bootstrap · v5.1.1</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="/bootstrap.cart.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link href="/bootstrap.cart.css" rel="stylesheet" crossorigin="anonymous">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/5.1/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -94,7 +94,7 @@
                                     <button type="button" class="btn btn-sm btn-outline-secondary">+</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">-</button>
                                 </div>
-                                <small class="text-muted" th:text="${index}"></small>
+                                <small class="text-muted" th:text="${countByProduct[0]}"></small>
                             </div>
                         </div>
                     </div>
@@ -110,7 +110,7 @@
                                     <button type="button" class="btn btn-sm btn-outline-secondary">+</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">-</button>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <small class="text-muted" th:text="${countByProduct[1]}"></small>
                             </div>
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                                     <button type="button" class="btn btn-sm btn-outline-secondary">+</button>
                                     <button type="button" class="btn btn-sm btn-outline-secondary">-</button>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <small class="text-muted" th:text="${countByProduct[2]}"></small>
                             </div>
                         </div>
                     </div>
@@ -148,7 +148,7 @@
     </div>
 </footer>
 
-<script src="/bootstrap.bundle.cart.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<script src="/bootstrap.bundle.cart.js" crossorigin="anonymous"></script>
 
 
 
