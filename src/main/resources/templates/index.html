@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <!-- saved from url=(0052)https://getbootstrap.com/docs/5.1/examples/carousel/ -->
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
@@ -59,38 +59,7 @@
 </head>
 <body>
 
-<header>
-
-    <img th:src="${message}">
-
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="https://getbootstrap.com/docs/5.1/examples/carousel/#">The Circus</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
-                    aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-                <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page"
-                           href="/">Главная</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/cart">Корзина</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" >Контакты</a>
-                    </li>
-                </ul>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-            </div>
-        </div>
-    </nav>
-</header>
+<header th:insert="blocks/header :: header"></header>
 
 <main>
 
@@ -236,11 +205,7 @@
 
 
     <!-- FOOTER -->
-    <footer class="container">
-        <p class="float-end"><a href="https://getbootstrap.com/docs/5.1/examples/carousel/#">Back to top</a></p>
-        <p>© 2017–2021 Company, Inc. · <a href="https://getbootstrap.com/docs/5.1/examples/carousel/#">Privacy</a> · <a
-                href="https://getbootstrap.com/docs/5.1/examples/carousel/#">Terms</a></p>
-    </footer>
+    <footer class="container" th:insert="blocks/footer :: footer"></footer>
 </main>
 
 
