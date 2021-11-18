@@ -82,51 +82,19 @@
         <div class="container">
 
             <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                <div class="col">
+                <div class="col" th:each="prod, stat: ${products}">
                     <div class="card shadow-sm">
                         <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><img width="100%" height="100%" src="https://sun9-33.userapi.com/impg/Dvwv94QDPgV67mY5kcfzqjOC0LC4WPr_QVtlIA/Oye0B08AWfM.jpg?size=500x500&quality=96&sign=88236c2f0c7c6f81d9a790937b7d086a&type=album"></svg>-->
-                        <img width="100%" height="100%" src="https://sun9-33.userapi.com/impg/Dvwv94QDPgV67mY5kcfzqjOC0LC4WPr_QVtlIA/Oye0B08AWfM.jpg?size=500x500&quality=96&sign=88236c2f0c7c6f81d9a790937b7d086a&type=album">
+                        <img width="100%" height="100%" th:src="${prod.picture}">
 
                         <div class="card-body">
                             <p class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">+</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">-</button>
+                                    <a th:href="|/buy?id=${stat.index}|" type="button" class="btn btn-sm btn-outline-secondary">+</a>
+                                    <a th:href="|/sell?id=${stat.index}|" type="button" class="btn btn-sm btn-outline-secondary">-</a>
                                 </div>
-                                <small class="text-muted" th:text="${countByProduct[0]}"></small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">+</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">-</button>
-                                </div>
-                                <small class="text-muted" th:text="${countByProduct[1]}"></small>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"></rect></svg>
-
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">+</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">-</button>
-                                </div>
-                                <small class="text-muted" th:text="${countByProduct[2]}"></small>
+                                <small class="text-muted" th:text="${prod.numberPurchases}"></small>
                             </div>
                         </div>
                     </div>

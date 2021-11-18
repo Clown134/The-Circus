@@ -11,43 +11,45 @@ public class MainController {
 
     public static Integer count = 0;
 
-    public List<Integer> countByProduct = new ArrayList<>();
+    public List<ProdAnima> products = new ArrayList<>();
 
     {
-        countByProduct.add(0);
-        countByProduct.add(0);
-        countByProduct.add(0);
+        products.add(new ProdAnima(0,"https://sun9-33.userapi.com/impg/Dvwv94QDPgV67mY5kcfzqjOC0LC4WPr_QVtlIA/Oye0B08AWfM.jpg?size=500x500&quality=96&sign=88236c2f0c7c6f81d9a790937b7d086a&type=album","Арбуз в сделку не входит","Кот на арбузе"));
+        products.add(new ProdAnima(0,"https://sun9-30.userapi.com/impg/5y7JYNiS10U4ZkQn0nqBs5UGc7uCAj5qONrvqQ/tRntNfvN4mw.jpg?size=500x500&quality=96&sign=39965f5eb54c88573ac163c3314ea5c0&type=album","Отдадим его в ваши руки очень неохотно","Потом узнаем"));
+        products.add(new ProdAnima(0,"https://sun9-49.userapi.com/impg/kCBm6GvhaBx_7LM84UNEupaAW5kyjrfEGTeBnQ/lzUCJuXla8M.jpg?size=500x500&quality=96&sign=cfdc136b2c3281c59c582a572bea4972&type=album","Большая и с очками","Обезьяна"));
     }
 
     @GetMapping("/cart")
     public String cart(Model model) {
-        model.addAttribute("countByProduct", countByProduct);
+        model.addAttribute("products", products);
         return "cart";
     }
 
     @GetMapping("/")
     public String index(Model model, @RequestParam(required = false) String string) {
-        model.addAttribute("message", string);
+        model.addAttribute("products", products);
         return "index";
     }
 
     @GetMapping("/buy")
     public String buy(Model model, @RequestParam(required = false) Integer id) {
 
-        Integer previousValue = countByProduct.get(id);
-        countByProduct.set(id, previousValue + 1);
+        ProdAnima prodAnima = products.get(id);
+        Integer previousValue = prodAnima.getNumberPurchases();
+        prodAnima.setNumberPurchases(previousValue + 1);
 
-        model.addAttribute("message", id);
-        return "index";
+        model.addAttribute("products", products);
+        return "cart";
     }
 
     @GetMapping("/sell")
     public String sell(Model model, @RequestParam(required = false) Integer id) {
 
-        Integer previousValue = countByProduct.get(id);
-        countByProduct.set(id, previousValue - 1);
+        ProdAnima prodAnima = products.get(id);
+        Integer previousValue = prodAnima.getNumberPurchases();
+        prodAnima.setNumberPurchases(previousValue - 1);
 
-        model.addAttribute("message", id);
-        return "index";
+        model.addAttribute("products", products);
+        return "cart";
     }
 }
