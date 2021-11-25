@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.*;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -31,9 +33,8 @@ public class MainController {
         return "index";
     }
 
-    @GetMapping("/buy")
-    public String buy(Model model, @RequestParam(required = false) Integer id) {
-
+    @PostMapping("/buy")
+    public String buy(Model model, @RequestParam Integer id) {
         ProdAnima prodAnima = products.get(id);
         Integer previousValue = prodAnima.getNumberPurchases();
         prodAnima.setNumberPurchases(previousValue + 1);
@@ -42,8 +43,8 @@ public class MainController {
         return "cart";
     }
 
-    @GetMapping("/sell")
-    public String sell(Model model, @RequestParam(required = false) Integer id) {
+    @PostMapping("/sell")
+    public String sell(Model model, @RequestParam Integer id) {
 
         ProdAnima prodAnima = products.get(id);
         Integer previousValue = prodAnima.getNumberPurchases();

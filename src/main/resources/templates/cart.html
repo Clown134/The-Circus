@@ -91,8 +91,18 @@
                             <p class="card-text"></p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a th:href="|/buy?id=${stat.index}|" type="button" class="btn btn-sm btn-outline-secondary">+</a>
-                                    <a th:href="|/sell?id=${stat.index}|" type="button" class="btn btn-sm btn-outline-secondary">-</a>
+                                    <form method="post" action="/buy">
+                                        <p>
+                                            <input value="+" class="btn btn-sm btn-outline-secondary" type="submit">
+                                            <input name="id" th:value="${stat.index}" type="hidden">
+                                        </p>
+                                    </form>
+                                    <form method="post" action="/sell">
+                                        <p>
+                                            <input value="-" class="btn btn-sm btn-outline-secondary" type="submit">
+                                            <input name="id" th:value="${stat.index}" type="hidden">
+                                        </p>
+                                    </form>
                                 </div>
                                 <small class="text-muted" th:text="${prod.numberPurchases}"></small>
                             </div>
