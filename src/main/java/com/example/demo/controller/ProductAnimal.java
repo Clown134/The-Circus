@@ -1,12 +1,12 @@
 package com.example.demo.controller;
 
-public class ProdAnima {
+public class ProductAnimal {
     private Integer numberPurchases;
     private String picture;
     private String description;
     private String name;
 
-    public ProdAnima(Integer numberPurchases, String picture, String description, String name) {
+    public ProductAnimal(Integer numberPurchases, String picture, String description, String name) {
         this.numberPurchases = numberPurchases;
         this.picture = picture;
         this.description = description;
