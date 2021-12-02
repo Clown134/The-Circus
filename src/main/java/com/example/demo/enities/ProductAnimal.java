@@ -1,16 +1,35 @@
-package com.example.demo.controller;
+package com.example.demo.enities;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "product")
 public class ProductAnimal {
-    private Integer numberPurchases;
+
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @Transient
+    private Integer numberPurchases = 0;
+
+    private String modal;
+
     private String picture;
+
     private String description;
+
     private String name;
 
-    public ProductAnimal(Integer numberPurchases, String picture, String description, String name) {
-        this.numberPurchases = numberPurchases;
-        this.picture = picture;
-        this.description = description;
-        this.name = name;
+    public ProductAnimal() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Integer getNumberPurchases() {
@@ -21,7 +40,17 @@ public class ProductAnimal {
         this.numberPurchases = numberPurchases;
     }
 
-    public String getPicture() {return picture;}
+    public String getModal() {
+        return modal;
+    }
+
+    public void setModal(String modal) {
+        this.modal = modal;
+    }
+
+    public String getPicture() {
+        return picture;
+    }
 
     public void setPicture(String picture) {
         this.picture = picture;

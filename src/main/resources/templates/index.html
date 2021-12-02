@@ -129,10 +129,10 @@
 
         <!-- Three columns of text below the carousel -->
         <div class="row">
-            <div class="col-lg-4" th:each="CDG, stat: ${CDG}">
-                    <img style = "border-radius: 50%" height = "140" width = "140" th:src="${CDG.picture}" alt = "Cat">
-                <h2 th:text="${CDG.name}"></h2>
-                <p th:text="${CDG.description}"></p>
+            <div class="col-lg-4" th:each="product, stat: ${products}">
+                    <img style = "border-radius: 50%" height = "140" width = "140" th:src="${product.picture}" alt = "Cat">
+                <h2 th:text="${product.name}"></h2>
+                <p th:text="${product.description}"></p>
                 <!-- Button trigger modal -->
                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
                     Подробнее
@@ -146,7 +146,7 @@
                                 <h5 class="modal-title" id="exampleModalLabel"></h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <div class="modal-body" th:text="${CDG.modal}">
+                            <div class="modal-body" th:text="${product.modal}">
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
