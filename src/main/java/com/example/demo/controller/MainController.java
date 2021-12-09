@@ -50,7 +50,20 @@ public class MainController {
 
         ProductAnimal prodAnima = products.get(id);
         Integer previousValue = prodAnima.getNumberPurchases();
-        prodAnima.setNumberPurchases(previousValue - 1);
+        if (previousValue > 0) {
+            prodAnima.setNumberPurchases(previousValue - 1);
+        }
+
+        model.addAttribute("products", products);
+        return "redirect:/cart";
+    }
+
+    @PostMapping("/clear")
+    public String clear(Model model) {
+        for (int id = 0; id < 3; id++){
+            ProductAnimal prodAnima = products.get(id);
+            prodAnima.setNumberPurchases(0);
+        }
 
         model.addAttribute("products", products);
         return "redirect:/cart";
