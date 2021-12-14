@@ -34,8 +34,6 @@
             }
         }
     </style>
-
-
 </head>
 
 <body>
@@ -94,17 +92,17 @@
                                     <form method="post" action="/buy">
                                         <p>
                                             <input value="+" class="btn btn-sm btn-outline-secondary" type="submit">
-                                            <input name="id" th:value="${stat.index}" type="hidden">
+                                            <input name="id" th:value="${prod.id}" type="hidden">
                                         </p>
                                     </form>
                                     <form method="post" action="/sell">
                                         <p>
                                             <input value="-" class="btn btn-sm btn-outline-secondary" type="submit">
-                                            <input name="id" th:value="${stat.index}" type="hidden">
+                                            <input name="id" th:value="${prod.id}" type="hidden">
                                         </p>
                                     </form>
                                 </div>
-                                <small class="text-muted" th:text="${prod.numberPurchases}"></small>
+                                <small class="text-muted" th:text="${cart.get(prod.id)}"></small>
                             </div>
                         </div>
                     </div>
@@ -144,9 +142,7 @@
 </main>
 
 <footer class="container" th:insert="blocks/footer :: footer"></footer>
-
-<script src="/bootstrap.bundle.min.js"  crossorigin="anonymous"></script>
-
+<script src="/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
 
 </body>

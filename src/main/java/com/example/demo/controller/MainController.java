@@ -13,59 +13,73 @@ import java.util.*;
 @Controller
 public class MainController {
 
+
+    // Название товара: 1, Название другого товара: 5
+    private final Map<Long, Integer> cart = new HashMap<>();
+
     @Autowired
-    ProductAnimalRepo productAnimalRepo;
-
-    private List<ProductAnimal> products;
-
-    @PostConstruct
-    private void init() {
-        products = productAnimalRepo.findAll();
-    }
+    private ProductAnimalRepo productAnimalRepo;
 
     @GetMapping("/cart")
     public String cart(Model model) {
-        model.addAttribute("products", products);
+        commnModel(model);
+
         return "cart";
     }
 
     @GetMapping("/")
-    public String index(Model model, @RequestParam(required = false) String string) {
-        model.addAttribute("products", products);
+    public String index(Model model) {
+        commnModel(model);
+
         return "index";
     }
 
-    @PostMapping("/buy")
-    public String buy(Model model, @RequestParam Integer id) {
-        ProductAnimal prodAnima = products.get(id);
-        Integer previousValue = prodAnima.getNumberPurchases();
-        prodAnima.setNumberPurchases(previousValue + 1);
+    @GetMapping("/creator")
+    public String creator(Model model) {
+        commnModel(model);
 
-        model.addAttribute("products", products);
+        return "creator";
+    }
+
+    @PostMapping("/buy")
+    public String buy(Model model, @RequestParam Long id) {
+        commnModel(model);
+
+        Integer purchased = cart.getOrDefault(id, 0);
+        cart.put(id, purchased + 1);
+
         return "redirect:/cart";
     }
 
     @PostMapping("/sell")
-    public String sell(Model model, @RequestParam Integer id) {
+    public String sell(Model model, @RequestParam Long id) {
+        commnModel(model);
 
-        ProductAnimal prodAnima = products.get(id);
-        Integer previousValue = prodAnima.getNumberPurchases();
-        if (previousValue > 0) {
-            prodAnima.setNumberPurchases(previousValue - 1);
+        Integer purchased = cart.getOrDefault(id, 0);
+
+        if (purchased > 0) {
+            cart.put(id, purchased - 1);
         }
 
-        model.addAttribute("products", products);
         return "redirect:/cart";
+    }
+
+    @PostMapping("/add")
+    public String add(Model model, @ModelAttribute ProductAnimal productAnimal) {
+        commnModel(model);
+        productAnimalRepo.save(productAnimal);
+        return "redirect:/";
     }
 
     @PostMapping("/clear")
     public String clear(Model model) {
-        for (int id = 0; id < 3; id++){
-            ProductAnimal prodAnima = products.get(id);
-            prodAnima.setNumberPurchases(0);
-        }
-
-        model.addAttribute("products", products);
+        commnModel(model);
+        cart.clear();
         return "redirect:/cart";
+    }
+
+    private void commnModel(Model model) {
+        model.addAttribute("products", productAnimalRepo.findAll());
+        model.addAttribute("cart", cart);
     }
 }

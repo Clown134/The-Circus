@@ -3,19 +3,17 @@ package com.example.demo.enities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
-@Table(name = "product")
 @Getter
 @Setter
 @NoArgsConstructor
-public class ProductAnimal {
+public class PurchaseHistory {
 
     @Id
     @GeneratedValue
     private Long id;
-    private String modal;
-    private String picture;
-    private String description;
-    private String name;
+    private Date date;
+    private String cart;
 }
