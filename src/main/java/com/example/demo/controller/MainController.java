@@ -19,6 +19,8 @@ public class MainController {
 
     @Autowired
     private ProductAnimalRepo productAnimalRepo;
+    @Autowired
+    private HistoryRepo historyRepo;
 
     @GetMapping("/cart")
     public String cart(Model model) {
@@ -39,6 +41,13 @@ public class MainController {
         commnModel(model);
 
         return "creator";
+    }
+
+    @GetMapping("/history")
+    public String history(Model model) {
+        commnModel(model);
+
+        return "history";
     }
 
     @PostMapping("/buy")
@@ -72,8 +81,12 @@ public class MainController {
     }
 
     @PostMapping("/clear")
-    public String clear(Model model) {
+    public String clear(Model model, @ModelAttribute PurchaseHistory purchaseHistory) {
         commnModel(model);
+        PurchaseHistory purchase = new PurchaseHistory();
+        purchase.setDate(new Date());
+        purchase.setCart("test");
+        historyRepo.save(purchase);
         cart.clear();
         return "redirect:/cart";
     }
