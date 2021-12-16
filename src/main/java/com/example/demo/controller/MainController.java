@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.*;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -46,6 +47,7 @@ public class MainController {
     @GetMapping("/history")
     public String history(Model model) {
         commnModel(model);
+        model.addAttribute("history", historyRepo.findAll());
 
         return "history";
     }
@@ -80,12 +82,22 @@ public class MainController {
         return "redirect:/";
     }
 
+    @GetMapping("/clear-history")
+    public String clearHistory(Model model) {
+        commnModel(model);
+        historyRepo.deleteAll();
+        return "redirect:/";
+    }
+
     @PostMapping("/clear")
     public String clear(Model model, @ModelAttribute PurchaseHistory purchaseHistory) {
         commnModel(model);
         PurchaseHistory purchase = new PurchaseHistory();
         purchase.setDate(new Date());
-        purchase.setCart("test");
+        purchase.setCart(cart.entrySet().stream()
+                .map(longIntegerEntry -> productAnimalRepo.findById(longIntegerEntry.getKey())
+                .orElseThrow().getName() + ": " + longIntegerEntry.getValue())
+                .collect(Collectors.joining(", ")));
         historyRepo.save(purchase);
         cart.clear();
         return "redirect:/cart";

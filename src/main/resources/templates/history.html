@@ -66,15 +66,13 @@
     <table class="table table-dark" style="margin: 30px auto; display block;">
         <thead>
         <tr>
-            <th scope="col">#</th>
             <th scope="col">ID</th>
             <th scope="col">Дата</th>
-            <th scope="col">Количество</th>
+            <th scope="col">Покупки</th>
         </tr>
         </thead>
-        <tbody th:each="PURCHASE_HISTORY, stat: ${product}">
+        <tbody th:each="PURCHASE_HISTORY, stat: ${history}">
         <tr>
-            <th scope="row">1</th>
             <td th:text="${PURCHASE_HISTORY.id}"></td>
             <td th:text="${PURCHASE_HISTORY.date}"></td>
             <td th:text="${PURCHASE_HISTORY.cart}"></td>
