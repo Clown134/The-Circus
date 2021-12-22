@@ -73,28 +73,28 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item">
-               <img src="https://focus.ua/static/storage/originals/4/58/1e382393ad73f866ee790d89ceb4a584.jpg">
+                <img src="https://focus.ua/static/storage/originals/4/58/1e382393ad73f866ee790d89ceb4a584.jpg">
                 </svg>
 
                 <div class="container">
                     <div class="carousel-caption text-start">
                         <h1>Наши гориллы</h1>
-                        <p>Они крутые и точно умнее Ваших одноклассников</p>
+                        <p>Сильнейшие в мире приматы, поразят вас своим интеллектом</p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item active">
-              <img src="https://img2.goodfon.ru/wallpaper/nbig/4/1a/korzina-koty-mnogo.jpg">
+                <img src="https://img2.goodfon.ru/wallpaper/nbig/4/1a/korzina-koty-mnogo.jpg">
 
                 <div class="container">
                     <div class="carousel-caption">
                         <h1>Наши котики</h1>
-                        <p>Они русские</p>
+                        <p>Они русские и полосатые</p>
                     </div>
                 </div>
             </div>
             <div class="carousel-item">
-              <img src="https://iodogs.net.ua/image/catalog/%D0%91%D0%BB%D0%BE%D0%B3/samoyed/1543492325182690462.jpg">
+                <img src="https://iodogs.net.ua/image/catalog/%D0%91%D0%BB%D0%BE%D0%B3/samoyed/1543492325182690462.jpg">
 
                 <div class="container">
                     <div class="carousel-caption text-end">
@@ -124,7 +124,7 @@
         <!-- Three columns of text below the carousel -->
         <div class="row">
             <div class="col-lg-4" th:each="product, stat: ${products}">
-                    <img style = "border-radius: 50%" height = "140" width = "140" th:src="${product.picture}" alt = "Cat">
+                <img style = "border-radius: 50%" height = "140" width = "140" th:src="${product.picture}" alt = "Cat">
                 <h2 th:text="${product.name}"></h2>
                 <p th:text="${product.description}"></p>
                 <!-- Button trigger modal -->
