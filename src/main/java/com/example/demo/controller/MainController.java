@@ -89,6 +89,13 @@ public class MainController {
         return "redirect:/";
     }
 
+    @GetMapping("/clear-prod")
+    public String clearProd(Model model) {
+        commnModel(model);
+        productAnimalRepo.deleteAll();
+        return "redirect:/";
+    }
+
     @PostMapping("/clear")
     public String clear(Model model, @ModelAttribute PurchaseHistory purchaseHistory) {
         commnModel(model);
